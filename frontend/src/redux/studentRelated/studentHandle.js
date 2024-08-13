@@ -6,14 +6,14 @@ import {
     getError,
     stuffDone
 } from './studentSlice';
-const REACT_APP_BASE_URL = "http://localhost:5000"
+// const REACT_APP_BASE_URL = "http://localhost:3000"
 
 
 export const getAllStudents = (id) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`${REACT_APP_BASE_URL}/Students/${id}`);
+        const result = await axios.get(`/api/Students/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));
         } else {
@@ -28,7 +28,7 @@ export const updateStudentFields = (id, fields, address) => async (dispatch) => 
     dispatch(getRequest());
 
     try {
-        const result = await axios.put(`${REACT_APP_BASE_URL}/${address}/${id}`, fields, {
+        const result = await axios.put(`/api/${address}/${id}`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });
         if (result.data.message) {
@@ -45,7 +45,7 @@ export const removeStuff = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.put(`${REACT_APP_BASE_URL}/${address}/${id}`);
+        const result = await axios.put(`/api/${address}/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));
         } else {

@@ -81,7 +81,7 @@ const ClassDetails = () => {
                 <BlueButton
                     variant="contained"
                     onClick={() => {
-                        navigate(`/Admin/class/subject/${classID}/${row.id}`)
+                        navigate(`/api/Admin/class/subject/${classID}/${row.id}`)
                     }}
                 >
                     View
@@ -93,7 +93,7 @@ const ClassDetails = () => {
     const subjectActions = [
         {
             icon: <PostAddIcon color="primary" />, name: 'Add New Subject',
-            action: () => navigate("/Admin/addsubject/" + classID)
+            action: () => navigate("api/Admin/addsubject/" + classID)
         },
         {
             icon: <DeleteIcon color="error" />, name: 'Delete All Subjects',
