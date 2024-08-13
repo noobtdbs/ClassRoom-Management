@@ -17,7 +17,7 @@ export const getAllSclasses = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`/api/${address}List/${id}`);
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}List/${id}`);
         if (result.data.message) {
             dispatch(getFailedTwo(result.data.message));
         } else {
@@ -32,7 +32,7 @@ export const getClassStudents = (id) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`/api/Sclass/Students/${id}`);
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_HOST_URL}/Sclass/Students/${id}`);
         if (result.data.message) {
             dispatch(getFailedTwo(result.data.message));
         } else {
@@ -47,7 +47,7 @@ export const getClassDetails = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`/api/${address}/${id}`);
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}/${id}`);
         if (result.data) {
             dispatch(detailsSuccess(result.data));
         }
@@ -60,7 +60,7 @@ export const getSubjectList = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`/api/${address}/${id}`);
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));
         } else {
@@ -75,7 +75,7 @@ export const getTeacherFreeClassSubjects = (id) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`/api/FreeSubjectList/${id}`);
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_HOST_URL}/FreeSubjectList/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));
         } else {
@@ -90,7 +90,7 @@ export const getSubjectDetails = (id, address) => async (dispatch) => {
     dispatch(getSubDetailsRequest());
 
     try {
-        const result = await axios.get(`/api/${address}/${id}`);
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}/${id}`);
         if (result.data) {
             dispatch(getSubDetailsSuccess(result.data));
         }

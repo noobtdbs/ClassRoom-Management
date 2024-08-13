@@ -11,7 +11,7 @@ export const getAllComplains = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`/${address}List/${id}`);
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}List/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));
         } else {

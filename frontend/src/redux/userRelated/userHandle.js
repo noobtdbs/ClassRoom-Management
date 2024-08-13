@@ -19,7 +19,7 @@ export const loginUser = (fields, role) => async (dispatch) => {
     dispatch(authRequest());
 
     try {
-        const result = await axios.post(`/api/${role}Login`, fields, {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_HOST_URL}/${role}Login`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });
         if (result.data.role) {
@@ -36,7 +36,7 @@ export const registerUser = (fields, role) => async (dispatch) => {
     dispatch(authRequest());
 
     try {
-        const result = await axios.post(`/api/${role}Reg`, fields, {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_HOST_URL}/${role}Reg`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });
         if (result.data.schoolName) {
@@ -61,7 +61,7 @@ export const getUserDetails = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`/api/${address}/${id}`);
+        const result = await axios.get(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}/${id}`);
         if (result.data) {
             dispatch(doneSuccess(result.data));
         }
@@ -74,7 +74,7 @@ export const deleteUser = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.delete(`/api/${address}/${id}`);
+        const result = await axios.delete(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));
         } else {
@@ -95,7 +95,7 @@ export const updateUser = (fields, id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.put(`/api/${address}/${id}`, fields, {
+        const result = await axios.put(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}/${id}`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });
         if (result.data.schoolName) {
@@ -113,7 +113,7 @@ export const addStuff = (fields, address) => async (dispatch) => {
     dispatch(authRequest());
 
     try {
-        const result = await axios.post(`/api/${address}Create`, fields, {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_HOST_URL}/${address}Create`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });
 
